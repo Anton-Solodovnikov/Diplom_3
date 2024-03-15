@@ -26,7 +26,6 @@ public class RegistrationPageTest {
     private String email = faker.random().hex(15) + "@praktikum.ru";
     private String password = faker.random().hex(15);
     private String name = faker.name().firstName();
-    private UserRequest createBody = new UserRequest(email, password, name);
     WebDriverWait wait;
 
     @Before
@@ -43,7 +42,7 @@ public class RegistrationPageTest {
         if(tokens.isEmpty())
             return;
         for (String token: tokens) {
-            userSteps.deleteUser(token, createBody);
+            userSteps.deleteUser(token);
         }
         driver.quit();
     }

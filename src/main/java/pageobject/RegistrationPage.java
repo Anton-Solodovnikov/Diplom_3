@@ -46,8 +46,4 @@ public class RegistrationPage {
         WebElement element = driver.findElement(warningIncorrectPassword);
         return element.getText();
     }
-    public void waitError() {
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOfElementLocated(warningIncorrectPassword));
-    }
 }

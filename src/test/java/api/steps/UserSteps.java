@@ -5,7 +5,6 @@ import api.UserApi;
 import api.json.UserRequest;
 import api.json.UserResponse;
 import io.qameta.allure.Step;
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -22,20 +21,13 @@ public class UserSteps {
     public void checkStatusCode(int expectedCode) {
         response.statusCode(equalTo(expectedCode));
     }
-    @Step("Проверка тела ответа")
-    public void checkResponseBody(String jsonField, Object expectedMessage) {
-        response.assertThat()
-                .body(jsonField,equalTo(expectedMessage));
-    }
     @Step("Удаление пользователя")
-    public void deleteUser(String token, UserRequest userRequest) {
-        Response deleteResponse = authApi.login(userRequest);
-        userApi.deleteUser(deleteResponse.body().as(UserResponse.class).getAccessToken().split(" ")[1]);
+    public void deleteUser(String token) {
+        userApi.deleteUser(token);
     }
     @Step("Взять токен из ответа")
     public String getToken() {
-        String token = response.extract().as(UserResponse.class).getAccessToken().split(" ")[1];
-        return token;
+        return response.extract().as(UserResponse.class).getAccessToken().split(" ")[1];
     }
     @Step("Логин пользователя")
     public void loginUser(String email, String password) {

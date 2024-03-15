@@ -29,13 +29,6 @@ public abstract class BaseHttpClient {
                 .addFilter(new ErrorLoggingFilter())
                 .build();
     }
-    protected Response doGetRequest(String path, String token) {
-        return given()
-                .spec(baseRequestSpec(token))
-                .get(path)
-                .thenReturn();
-    }
-
     protected Response doPostRequest(String path, Object body) {
         return given()
                 .spec(baseRequestSpec())
@@ -47,14 +40,6 @@ public abstract class BaseHttpClient {
         return given()
                 .spec(baseRequestSpec(token))
                 .delete(path)
-                .thenReturn();
-    }
-
-    protected Response doPatchRequest(String path, Object body, String token) {
-        return given()
-                .spec(baseRequestSpec(token))
-                .body(body)
-                .patch(path)
                 .thenReturn();
     }
 }
