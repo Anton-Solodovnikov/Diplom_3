@@ -38,12 +38,12 @@ public class RegistrationPageTest {
     }
     @After
     public void teardown() {
+        driver.quit();
         if(tokens.isEmpty())
             return;
         for (String token: tokens) {
             userSteps.deleteUser(token);
         }
-        driver.quit();
     }
     @Test
     @DisplayName("Успешная регистрация нового пользователя")

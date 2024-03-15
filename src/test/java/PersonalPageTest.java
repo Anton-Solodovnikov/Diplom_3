@@ -48,12 +48,12 @@ public class PersonalPageTest {
     }
     @After
     public void teardown() {
+        driver.quit();
         if(tokens.isEmpty())
             return;
         for (String token: tokens) {
             userSteps.deleteUser(token);
         }
-        driver.quit();
     }
     @Test
     @DisplayName("Открытие личного кабинета")

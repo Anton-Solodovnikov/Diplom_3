@@ -45,12 +45,12 @@ public class LoginPageTest {
    }
     @After
     public void teardown() {
+        driver.quit();
         if(tokens.isEmpty())
             return;
         for (String token: tokens) {
             userSteps.deleteUser(token);
         }
-        driver.quit();
     }
 
     @Test
