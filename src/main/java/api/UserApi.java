@@ -1,6 +1,5 @@
 package api;
 
-import api.json.UserRequest;
 import io.restassured.response.Response;
 
 public class UserApi extends BaseHttpClient {

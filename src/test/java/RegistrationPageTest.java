@@ -1,4 +1,3 @@
-import api.json.UserRequest;
 import api.steps.UserSteps;
 import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;
